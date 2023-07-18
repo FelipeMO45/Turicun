@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 
 class InicioController extends Controller
 {
-    public function __construct(){
+
+    public function __construct()
+    {
         $this->middleware('auth');
-     }
+    }
+
+
     /**
      * Display a listing of the resource.
      * 
@@ -17,12 +21,13 @@ class InicioController extends Controller
      */
     public function index()
     {
-        return view ('modulos.Inicio');
+        return view('modulos.Inicio');
     }
-
 
     /**
      * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -31,6 +36,9 @@ class InicioController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -39,6 +47,9 @@ class InicioController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @param  \App\Models\Inicio  $inicio
+     * @return \Illuminate\Http\Response
      */
     public function show(Inicio $inicio)
     {
@@ -47,6 +58,9 @@ class InicioController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Inicio  $inicio
+     * @return \Illuminate\Http\Response
      */
     public function edit(Inicio $inicio)
     {
@@ -55,6 +69,10 @@ class InicioController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Inicio  $inicio
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Inicio $inicio)
     {
@@ -63,6 +81,9 @@ class InicioController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Inicio  $inicio
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Inicio $inicio)
     {

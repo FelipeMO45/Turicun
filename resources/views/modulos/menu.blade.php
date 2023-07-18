@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('Usuarios')}}" class="nav-link">
+                    <a href="{{ url('vehiculos')}}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Vehiculos
@@ -73,6 +73,14 @@
                         <i class="nav-icon fas fa-cash-register"></i>
                         <p>
                             Empleados
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('usuarios')}}" class="nav-link">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            Usuarios
                         </p>
                     </a>
                 </li>

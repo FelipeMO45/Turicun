@@ -94,10 +94,8 @@ class UsuariosController extends Controller
         } else {
             DB::table('users')->where('id', auth()->user()->id)->update([
                 'name' => $datos["name"],
-                'email' => $datos["email"], 'documento' => $documento, 'foto' => $rutaImg
-            ]);
+                'email' => $datos["email"], 'documento' => $documento, 'foto' => $rutaImg]);
         }
-
         return redirect('MiPerfil');
     }
 
@@ -135,7 +133,7 @@ class UsuariosController extends Controller
             'foto' => ''
         ]);
         //Redireccionamos a la vista de usuarios, al llamar a la ruta de usurios
-        return redirect('Usuarios')->with('UsuarioCreado', 'OK');
+        return redirect('usuarios')->with('UsuarioCreado', 'OK');
     }
 
     /**

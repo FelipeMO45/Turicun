@@ -6,6 +6,7 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\UsuariosController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,13 @@ Route::get('Inicio', [InicioController::class, 'index']);
 
 Route::get('/MiPerfil', [App\Http\Controllers\UsuariosController::class,'MiPerfil'])->name('MiPerfil');
 
-Route::get('/Usuarios', [App\Http\Controllers\UsuariosController::class, 'index'])->name('index');
+Route::put('/MiPerfil', [App\Http\Controllers\UsuariosController::class, 'MiPerfilUpdate'])->name('MiPerfilUpdate');
+Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'index'])->name('index');
+Route::post('/usuarios', [App\Http\Controllers\UsuariosController::class, 'store'])->name('store');
+
+Route::get('/vehiculos', [App\Http\Controllers\UsuariosController::class, 'vehiculos'])->name('vehiculos');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+

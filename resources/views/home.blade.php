@@ -9,15 +9,17 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('¡Iniciaste sesión correctamente!') }}
+                    <div></div><b>Da clic en la palabra Laravel para redirigirte al dashboard</b>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

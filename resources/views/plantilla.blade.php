@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Librería </title>
+  <title> SGT </title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -26,10 +26,13 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-  
+
   @if(Auth::user())
   <div class="wrapper">
 
@@ -82,10 +85,20 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="dist/js/pages/dashboard.js"></script>
   <!-- SweetAlert2 Scripts-->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  <script src="plugins/datatables/jquery.dataTables.min.js"> </script>
+  <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"> </script>
 
-    $(".dtUsers").DataTable({
+  <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"> </script>
+  <script src="plugins/datatables-responsive/js/dataTables.responsive..min.js"> </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  @if(session('UsuarioCreado')== 'OK')
+  <script type="text/javascript">
+     $(".dtUsers").DataTable({
       "language": {
+        
         "sSearch": "Buscar:",
         "sEmptyTable": "No hay datos en la Tabla",
         "sZeroRecords": "No se encontraron resultados",
@@ -121,11 +134,6 @@
         }
       })
     })
-  </script>
-
-
-  @if(session('UsuarioCreado')== 'OK')
-  <script type="text/javascript">
     Swal.fire(
       'El usuario ha sido creado',
       '',
