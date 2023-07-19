@@ -11,35 +11,25 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function MiPerfil()
+    {
+        return view('modulos.MiPerfil');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    public function MiPerfil()
-    {
-        return view('modulos.MiPerfil');
-    }
-
     public function index()
     {
-        //
         $usuarios = Usuarios::all();
         return view('modulos.Usuarios')->with('usuarios', $usuarios);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function MiPerfilUpdate(Request $request)
     {
         if (auth()->user()->email != request('email')) {
@@ -94,10 +84,19 @@ class UsuariosController extends Controller
         } else {
             DB::table('users')->where('id', auth()->user()->id)->update([
                 'name' => $datos["name"],
-                'email' => $datos["email"], 'documento' => $documento, 'foto' => $rutaImg]);
+                'email' => $datos["email"], 'documento' => $documento, 'foto' => $rutaImg
+            ]);
         }
         return redirect('MiPerfil');
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+
 
 
 
@@ -153,9 +152,15 @@ class UsuariosController extends Controller
      * @param  \App\Models\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuarios $usuarios)
+    public function edit(Usuarios $id)
     {
         //
+        if(auth()->user()->rol != 'Administrador'){
+            return redirect('inicio');
+        }
+        $usuarios = Usuarios::all();
+        $usuario  = Usuarios::find($id->id);
+        return view('modulos.usuarios', compact('usuarios', 'usuario'));
     }
 
     /**
@@ -165,9 +170,33 @@ class UsuariosController extends Controller
      * @param  \App\Models\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuarios $usuarios)
+    public function update(Request $request, $id)
     {
-        //
+        $usuario = Usuarios::find($id);
+
+        if($usuario["email"] != request('email')){
+            $datos=request()->validate([
+                'name' => ['required'],
+                'rol' => ['required'],
+                'email' => ['required', 'email', 'unique:users']
+            ]);
+        }else{
+            $datos=request()->validate([
+                'name' => ['required'],
+                'rol' => ['required'],
+                'email' => ['required', 'email']
+            ]);
+        }
+
+        if($usuario["password"] != request('password')){
+            $clave=request('password');
+        }else{
+            $clave=$usuario["password"];
+        }
+
+        DB::table('users')->where('id', $usuario["id"])->update(['name'=>$datos["name"], 'email'=>$datos["email"], 'rol'=>$datos["rol"], 'password'=>Hash::make($clave)]);
+
+        return redirect('usuarios');
     }
 
     /**
@@ -176,8 +205,16 @@ class UsuariosController extends Controller
      * @param  \App\Models\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuarios $usuarios)
+    public function destroy($id)
     {
-        //
+        $usuario= Usuarios::find($id);
+        $exp = explode("/", $usuario->foto);
+
+            if (Storage::delete('public/'.$usuario->foto)){
+                Storage::deleteDirectory('public/'.$exp[0]. '/' .$exp[1]);
+               
+            }
+        Usuarios::destroy($id);
+        return redirect('usuarios');
     }
 }

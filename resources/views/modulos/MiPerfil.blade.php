@@ -9,9 +9,11 @@
     <section class="content">
         <div class="box">
             <div class="box-body">
-                <form method="POST" action="" enctype="multipart form/data">
+                <form method="post" action="" enctype="multipart/form-data">
+
                     @csrf
-                    @method('PUT')
+                    @method('put')
+
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
                             <h2>Nombre: </h2>
@@ -20,8 +22,10 @@
                             <input type="text" name="documento" value="{{auth()->user()->documento}}" class="input-lg">
                         </div>
                         <div class="col-md-6 col-xs-12">
+                            
                             <h2>Email: </h2>
                             <input type="text" name="email" value="{{auth()->user()->email}}" class="input-lg">
+
                             <h2>Password: </h2>
                             <input type="text" name="passwordN" value="" class="input-lg">
                             <input type="hidden" name="password" value="{{auth()->user()->password}}" class="input-lg">

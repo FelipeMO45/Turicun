@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{url('Inicio')}}" class="brand-link">
-        <i class="fas fa-book"></i>
+        <i class="fas fa-solid fa-shuttle-van"></i>
         <span class="brand-text font-weight-light">SGTuricun</span>
     </a>
 
@@ -37,23 +37,23 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('vehiculos')}}" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fas fa-bus"></i>
                         <p>
                             Vehiculos
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('Clientes')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user-friends"></i>
+                    <a href="{{ url('conductores')}}" class="nav-link">
+                        <i class="nav-icon fas fa-solid fa-user-tie"></i>
                         <p>
                             Conductores
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
+                    <a href="{{ url('rutas')}}" class="nav-link">
+                        <i class="nav-icon fas fa-route"></i>
                         <p>
                             Rutas
                         </p>
@@ -61,16 +61,16 @@
                     
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-cash-register"></i>
+                    <a href="{{ url('horarios')}}" class="nav-link">
+                        <i class="nav-icon fas fa-clock"></i>
                         <p>
                             Horarios
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-cash-register"></i>
+                    <a href="{{ url('empleados')}}" class="nav-link">
+                        <i class="nav-icon fas fa-solid fa-user-friends"></i>
                         <p>
                             Empleados
                         </p>
@@ -78,7 +78,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('usuarios')}}" class="nav-link">
-                        <i class="nav-icon fas fa-cash-register"></i>
+                        <i class="nav-icon fas fa-solid fa-users-cog"></i>
                         <p>
                             Usuarios
                         </p>
